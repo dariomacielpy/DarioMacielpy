@@ -1,0 +1,29 @@
+#Crea un programa que sea capaz de generar e imprimir todas las 
+#permutaciones disponibles formadas por las letras de una palabra.
+#Las palabras generadas no tienen por qué existir.
+#Deben usarse todas las letras en cada permutación.
+#Ejemplo: sol, slo, ols, osl, los, lso 
+
+#asi lo hice yo
+#investigue y para permutar tengo que importar itertools
+import itertools
+#creo la funcion 
+def permutacion():
+    palabra = input("Ingrese una palabra ")
+    #uso la funcion permutations y creo una lista con las tuplas creadas
+    lista = list(itertools.permutations(palabra, len(palabra)))
+    #creo una lista vacia para ingresar las tuplas convertidas en palabras
+    lista_1 = []
+    #recorro tupla por tupla
+    for tupla in lista:
+        #creo una variable para cada tupla convertida a str
+        palabra_nueva = ""
+        #recorro cada tupla para desempaquetar
+        for i in range((len(palabra))):
+            #en cada iteracion se van sumando las letras
+            palabra_nueva = palabra_nueva+str(tupla[i])
+        #agrego cada palabra formada de cada tupla a la lista
+        lista_1.append(palabra_nueva)
+    #muestro la lista        
+    return print(lista_1)
+permutacion()
